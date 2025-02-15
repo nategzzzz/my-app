@@ -12,11 +12,14 @@ function DormSelector(){
     const dormData = 
     {
         Freshman: ['Barton Hall', 'Bray Hall'],
-        Sophomore: ['North Hall', 'E-Complex']
+        Sophomore: ['North Hall', 'E-Complex'],
+        Junior: ['City Station', 'Polytechnic'],
+        Senior: ['City Station', 'Polytechnic']
     };
 
     const roomTypes =
     {
+        'Barton Hall':['Triple'],
         'Bray Hall': ['Single', 'Double'],
         'North Hall': ['Single', 'Double'],
         'E-Complex': ['Single', 'Double']
@@ -32,23 +35,37 @@ function DormSelector(){
             <div>
                 <button onClick={() => handleYearClick('Freshman')}>Freshman</button>
                 <button onClick={() => handleYearClick('Sophomore')}>Sophomore</button>
+                <button onClick={() => handleYearClick('Junior')}>Junior</button>
+                <button onClick={() => handleYearClick('Senior')}>Senior</button>
             </div>
 
-            {selectedYear &&(
+            {selectedYear && (
                 <div>
                     <h3>{selectedYear} Dorms</h3>
                     <ul>
                         {dormData[selectedYear].map((dorm) => (
-                            <li key= {dorm}>
-                                <span onClick={() => handleDormClick(dorm)}>
+                            <li key={dorm}>
+                                <button onClick={() => handleDormClick(dorm)}>
                                     {dorm}
-                                </span>
+                                </button>
+                                {selectedDorm === dorm && roomTypes[dorm] && ( 
+                                    <ul>
+                                        {roomTypes[dorm].map((roomType) => (
+                                            <li key={roomType}>
+                                                <button onClick={() => handleRoomTypeClick(roomType)}>
+                                                    {roomType}
+                                                </button>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
                             </li>
                         ))}
                     </ul>
                 </div>
             )}
         </div>
-    )
+    );
 }
+
 export default DormSelector
