@@ -10,7 +10,7 @@ function DormSelector(){
     const handleDormClick = (dorm) => {setSelectedDorm(dorm);};
     const handleRoomTypeClick = (roomType) => 
         {
-            setSelectedRoomType(roomRype);
+            setSelectedRoomType(roomType);
             setShowRoomDetails(true);
         };
 
@@ -32,9 +32,7 @@ function DormSelector(){
 
     const roomImages = 
     {
-        'Single':['/images/single1.jpg', '/images/single2.png'],
-        'Double':['/images/double1.jpg', '/images/double2.png'],
-        'Triple':['/images/triple1.jpg']
+        'Barton Hall': {'Triple':['/images/triple1.jpg']}
     }
 
     const modelData = {
@@ -79,7 +77,16 @@ function DormSelector(){
             {showRoomDetails && (
                 <div>
                     <h3>{selectedRoomType} Pictures</h3>
-                    {/* Add your image display logic here */}
+                    <div> {/* Container for images*/}
+                        {roomImages[selectedDorm][selectedRoomType].map((imageURL, index)=>(
+                            <img
+                                key={index}
+                                src={imageURL}
+                                alt={`${selectedRoomType} Example`}
+                                style={{width: '200px', height: '150px', marginRight: '10px'}}
+                            />
+                        ))}
+                    </div>
 
                     {/* 3D Model Placeholder */}
                     <button> View 3D Model (Coming Soon)</button>
