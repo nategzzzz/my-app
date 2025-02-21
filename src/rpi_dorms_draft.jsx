@@ -32,7 +32,12 @@ function DormSelector(){
 
     const roomImages = 
     {
-        'Barton Hall': {'Triple':['/images/triple1.jpg']}
+        'Barton Hall': {'Triple':['/images/Barton1.jpg']},
+        'Bray Hall': 
+        {
+            'Single':['/images/Bray_Sin.jpg'],
+            'Double':['/images/Bray_doub.jpg']
+        }
     }
 
     const modelData = {
