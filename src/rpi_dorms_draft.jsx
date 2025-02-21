@@ -4,10 +4,15 @@ function DormSelector(){
     const [selectedYear, setSelectedYear] = useState(null);
     const [selectedDorm, setSelectedDorm] = useState(null);
     const [selectedRoomType, setSelectedRoomType] = useState(null);
+    const [showRoomDetails, setShowRoomDetails] = useState(null);
 
     const handleYearClick = (year) => {setSelectedYear(year);};
     const handleDormClick = (dorm) => {setSelectedDorm(dorm);};
-    const handleRoomTypeClick = (roomType) => {setSelectedRoomType(roomType);};
+    const handleRoomTypeClick = (roomType) => 
+        {
+            setSelectedRoomType(roomRype);
+            setShowRoomDetails(true);
+        };
 
     const dormData = 
     {
@@ -23,6 +28,13 @@ function DormSelector(){
         'Bray Hall': ['Single', 'Double'],
         'North Hall': ['Single', 'Double'],
         'E-Complex': ['Single', 'Double']
+    }
+
+    const roomImages = 
+    {
+        'Single':['/images/single1.jpg', '/images/single2.png'],
+        'Double':['/images/double1.jpg', '/images/double2.png'],
+        'Triple':['/images/triple1.jpg']
     }
 
     const modelData = {
@@ -62,6 +74,15 @@ function DormSelector(){
                             </li>
                         ))}
                     </ul>
+                </div>
+            )}
+            {showRoomDetails && (
+                <div>
+                    <h3>{selectedRoomType} Pictures</h3>
+                    {/* Add your image display logic here */}
+
+                    {/* 3D Model Placeholder */}
+                    <button> View 3D Model (Coming Soon)</button>
                 </div>
             )}
         </div>
