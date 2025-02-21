@@ -37,7 +37,18 @@ function DormSelector(){
         {
             'Single':['/images/Bray_Sin.jpg'],
             'Double':['/images/Bray_doub.jpg']
+        },
+        'North Hall':
+        {
+            'Single':['/images/North_Sin.jpg'],
+            'Double':['/images/North_doub.jpg']
+        },
+        'E-Complex':
+        {
+            'Single':['/images/E_Sin.jpg'],
+            'Double':['/images/E_doub.jpg']
         }
+
     }
 
     const modelData = {
@@ -79,7 +90,7 @@ function DormSelector(){
                     </ul>
                 </div>
             )}
-            {showRoomDetails && (
+            {showRoomDetails && selectedDorm && selectedRoomType && Array.isArray(roomImages[selectedDorm][selectedRoomType]) && (
                 <div>
                     <h3>{selectedRoomType} Pictures</h3>
                     <div> {/* Container for images*/}
