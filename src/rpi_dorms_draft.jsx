@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
+import NoPictures from './DormPictures';
+import './style.css';
 
 function DormSelector(){
     const [selectedYear, setSelectedYear] = useState(null);
@@ -93,9 +95,10 @@ function DormSelector(){
             )}
             {showRoomDetails && selectedDorm && selectedRoomType && Array.isArray(roomImages[selectedDorm][selectedRoomType]) && (
                 <div>
-                    <button>Pictures</button>
+                    <Link to="/dorm-pictures" style={{textDecoration: 'none'}}>
+                        <button>Pictures</button>
+                    </Link>
 
-                    {/* 3D Model Placeholder */}
                     <button> View 3D Model (Coming Soon)</button>
                 </div>
             )}
