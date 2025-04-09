@@ -8,15 +8,22 @@ function DormSelector(){
     const [selectedDorm, setSelectedDorm] = useState(null);
     const [selectedRoomType, setSelectedRoomType] = useState(null);
     const [showRoomDetails, setShowRoomDetails] = useState(null);
+    const [showModelList, setShowModelList] = useState(false);
+    const [selectedVideo, setSelectedVideo] = useState(null);
 
     const handleYearClick = (year) => {setSelectedYear(year);};
-    const handleDormClick = (dorm) => {setSelectedDorm(dorm);};
+    const handleDormClick = (dorm) => {
+        console.log('Selected dorm:', dorm);
+        setSelectedDorm(dorm);
+    };
     const handleRoomTypeClick = (roomType) => 
         {
             setSelectedRoomType(roomType);
             setShowRoomDetails(true);
         };
-
+    const handleShowModelList = () => setShowModelList(!showModelList);
+    const handleVideoClick = (videoUrl) => setSelectedVideo(videoUrl);
+    
     const dormData = 
     {
         Freshman: ['Barton Hall', 'Bray Hall'],
@@ -55,7 +62,9 @@ function DormSelector(){
     }
 
     const modelData = {
-        'North Hall' : 'path/to/north_hall_model.glb'
+        'E-Complex' : [
+            {name:'E-Complex_Single1', videoUrl: '/Finalized_Models/Final_3DQuad_Double_Macdonald.mp4'}
+        ]
     };
 
     return(
@@ -96,10 +105,43 @@ function DormSelector(){
             {showRoomDetails && selectedDorm && selectedRoomType && Array.isArray(roomImages[selectedDorm][selectedRoomType]) && (
                 <div>
                     <Link to="/dorm-pictures" style={{textDecoration: 'none'}}>
-                        <button>Pictures</button>
+                        <button>Videos</button>
                     </Link>
 
-                    <button> View 3D Model (Coming Soon)</button>
+                    <button onClick={handleShowModelList}>View 3D Model</button>
+                    {showModelList && modelData[selectedDorm] && (
+                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '10px' }}>
+                            {modelData[selectedDorm].map((model, index) => {
+                                console.log('Model name:', model.name);
+                                console.log('Model video URL:', model.videoUrl);
+
+                                return (
+                                    <button
+                                        key={index}
+                                        onClick={() => handleVideoClick(model.videoUrl)}
+                                        style={{
+                                            padding: '10px',
+                                            border: '1px solid #ccc',
+                                            borderRadius: '5px',
+                                            backgroundColor: '#f0f0f0',
+                                            cursor: 'pointer'
+                                        }}
+                                    >
+                                        {model.name}
+                                    </button>
+                                );
+                            })}
+                        </div>
+                    )}
+                </div>
+            )}
+            {selectedVideo && (
+                <div style={{ marginTop: '20px' }}>
+                    <h3>Video Preview</h3>
+                    <video controls style={{ width: '100%', maxWidth: '600px' }}>
+                        <source src={selectedVideo} type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
                 </div>
             )}
         </div>
