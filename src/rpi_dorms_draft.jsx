@@ -22,7 +22,13 @@ function DormSelector(){
             setShowRoomDetails(true);
         };
     const handleShowModelList = () => setShowModelList(!showModelList);
-    const handleVideoClick = (videoUrl) => setSelectedVideo(videoUrl);
+
+    
+    const resetVideo = (videoUrl) => {
+        setSelectedVideo(null);
+        setTimeout(() => setSelectedVideo(videoUrl), 0);
+    };
+    
     
     const dormData = 
     {
@@ -42,26 +48,101 @@ function DormSelector(){
         'Blitman':['Apartment'],
         'Quadrangle (Quad)':['Single','Double','Quadruple'],
         'Colvin and Albright (RAHP A)':['Apartment'],
-        'Beman and Brinsmade (RAHP B)':['Apartment']
+        'Beman and Brinsmade (RAHP B)':['Apartment'],
+        'City Station':['Apartment'],
+        'Polytechnic':['Apartment'],
+        'Bryckwyck Apartments':['Single Apartment','Double Apartment'],
+        'Stacwyck Apartments':['Apartments']
     }
-    
+
     const modelData = {
-        'E-Complex': {
+        'Barton Hall': {
+            'Triple': [
+                //{name: 'North Hall Single1', videoUrl: '/Finalized_Models/North_Hall_Single.mp4'}
+            ]
+        },
+        'Bray Hall': {
             'Single': [
-                {name: 'E-Complex_Single1', videoUrl: '/Finalized_Models/Ecomplex_Single.mp4'},
-                {name: 'E-Complex_Single2', videoUrl: '/Finalized_Models/Ecomplex_Single2.mp4'}
+                //{name: 'North Hall Single1', videoUrl: '/Finalized_Models/North_Hall_Single.mp4'}
+            ],
+            'Double': [
+                //{name: 'North Hall Double', videoUrl: '/Finalized_Models/North_Hall_Double.mp4'}
+            ]
+        },
+        'Sharp Hall': {
+            'Single Suite': [
+                {name: 'Sharp Hall', videoUrl: '/Finalized_Models/Sharp_Hall.mp4'}
+            ]
+        },
+        'North Hall': {
+            'Single': [
+                {name: 'North Hall Single', videoUrl: '/Finalized_Models/North_Hall_Single.mp4'},
+                {name: 'North Hall Single2', videoUrl: '/Finalized_Models/North_Hall_Single2.mp4'}
+            ],
+            'Double': [
+                {name: 'North Hall Double', videoUrl: '/Finalized_Models/North_Hall_Double.mp4'}
+            ]
+        },
+        'E-Complex': {
+            'Single': [
+                {name: 'E-Complex Single', videoUrl: '/Finalized_Models/Ecomplex_Single.mp4'},
+                {name: 'E-Complex Single2', videoUrl: '/Finalized_Models/Ecomplex_Single2.mp4'}
             ],
             'Double': [
                 //{name: 'E-Complex_Double1', videoUrl: '/Finalized_Models/Ecomplex_Double.mp4'}
             ]
         },
-    
         'Blitman': {
             'Apartment': [
-                {name: 'Blitman_Apt1', videoUrl: '/Finalized_Models/Blitman_Apt1.mp4'}
+                {name: 'Blitman Apt', videoUrl: '/Finalized_Models/Blitman.mp4'}
             ]
-        }
-    
+        },
+        'Quadrangle (Quad)': {
+            'Single': [
+                {name: 'Quad Single Cooper', videoUrl: '/Finalized_Models/Quad_Single_Cooper.mp4'},
+                {name: 'Quad Single Hunt', videoUrl: '/Finalized_Models/Quad_Single_Hunt.mp4'}
+            ],
+            'Double': [
+                {name: 'Quad Double Macdonald', videoUrl: '/Finalized_Models/Quad_Double_Macdonald.mp4'}
+            ],
+            'Quadruple': [
+                //{name: 'E-Complex_Double1', videoUrl: '/Finalized_Models/Ecomplex_Double.mp4'}
+            ]
+        },
+        'Colvin and Albright (RAHP A)': {
+            'Apartment': [
+                {name: 'RAHP A', videoUrl: '/Finalized_Models/Rhaps_A.mp4'}
+            ]
+        },
+        'Beman and Brinsmade (RAHP B)': {
+            'Apartment': [
+                //{name: 'Blitman Apt1', videoUrl: '/Finalized_Models/Blitman.mp4'}
+            ]
+        },
+        'City Station': {
+            'Apartment': [
+                //{name: 'Blitman Apt1', videoUrl: '/Finalized_Models/Blitman.mp4'}
+            ]
+        },
+        'Polytechnic': {
+            'Apartment': [
+                //{name: 'Blitman Apt1', videoUrl: '/Finalized_Models/Blitman.mp4'}
+            ]
+        },
+        'Bryckwyck Apartments': {
+            'Single Apartment': [
+                {name: 'Bryckwyck Single Apt', videoUrl: '/Finalized_Models/Bryckwyck_Single.mp4'}
+            ],
+            'Double Apartment':[
+                //{name: 'Blitman Apt1', videoUrl: '/Finalized_Models/Blitman.mp4'}
+            ]
+        },
+        'Stacwyck Apartments': {
+            'Apartment': [
+                //{name: 'Blitman Apt1', videoUrl: '/Finalized_Models/Blitman.mp4'}
+            ]
+        },
+        
     };
     
 
@@ -117,7 +198,7 @@ function DormSelector(){
                                 return (
                                     <button
                                         key={index}
-                                        onClick={() => handleVideoClick(model.videoUrl)}
+                                        onClick={() => resetVideo(model.videoUrl)}
                                         style={{
                                             padding: '10px',
                                             border: '1px solid #ccc',
