@@ -26,46 +26,44 @@ function DormSelector(){
     
     const dormData = 
     {
-        Freshman: ['Barton Hall', 'Bray Hall'],
-        Sophomore: ['North Hall', 'E-Complex'],
-        Junior: ['City Station', 'Polytechnic'],
-        Senior: ['City Station', 'Polytechnic']
+        Freshman: ['Barton Hall', 'Bray Hall', 'Sharp Hall'],
+        Sophomore: ['North Hall', 'E-Complex', 'Blitman','Quadrangle (Quad)', 'Colvin and Albright (RAHP A)', 'Beman and Brinsmade (RAHP B)'],
+        Junior: ['City Station', 'Polytechnic', 'Bryckwyck Apartments', 'Stacwyck Apartments'],
+        Senior: ['City Station', 'Polytechnic','Bryckwyck Apartments', 'Stacwyck Apartments']
     };
 
     const roomTypes =
     {
         'Barton Hall':['Triple'],
         'Bray Hall': ['Single', 'Double'],
+        'Sharp Hall':['Single Suite'],
         'North Hall': ['Single', 'Double'],
-        'E-Complex': ['Single', 'Double']
+        'E-Complex': ['Single', 'Double'],
+        'Blitman':['Apartment'],
+        'Quadrangle (Quad)':['Single','Double','Quadruple'],
+        'Colvin and Albright (RAHP A)':['Apartment'],
+        'Beman and Brinsmade (RAHP B)':['Apartment']
     }
-
-    const roomImages = 
-    {
-        'Barton Hall': {'Triple':['/images/Barton1.jpg']},
-        'Bray Hall': 
-        {
-            'Single':['/images/Bray_Sin.jpg'],
-            'Double':['/images/Bray_doub.jpg']
-        },
-        'North Hall':
-        {
-            'Single':['/images/North_Sin.jpg'],
-            'Double':['/images/North_doub.jpg']
-        },
-        'E-Complex':
-        {
-            'Single':['/images/E_Sin.jpg'],
-            'Double':['/images/E_doub.jpg']
-        }
-
-    }
-
+    
     const modelData = {
-        'E-Complex' : [
-            {name:'E-Complex_Single1', videoUrl: '/Finalized_Models/Final_3DQuad_Double_Macdonald.mp4'}
-        ]
+        'E-Complex': {
+            'Single': [
+                {name: 'E-Complex_Single1', videoUrl: '/Finalized_Models/Ecomplex_Single.mp4'},
+                {name: 'E-Complex_Single2', videoUrl: '/Finalized_Models/Ecomplex_Single2.mp4'}
+            ],
+            'Double': [
+                //{name: 'E-Complex_Double1', videoUrl: '/Finalized_Models/Ecomplex_Double.mp4'}
+            ]
+        },
+    
+        'Blitman': {
+            'Apartment': [
+                {name: 'Blitman_Apt1', videoUrl: '/Finalized_Models/Blitman_Apt1.mp4'}
+            ]
+        }
+    
     };
+    
 
     return(
         <div>
@@ -102,37 +100,39 @@ function DormSelector(){
                     </ul>
                 </div>
             )}
-            {showRoomDetails && selectedDorm && selectedRoomType && Array.isArray(roomImages[selectedDorm][selectedRoomType]) && (
+            {showRoomDetails && selectedDorm && selectedRoomType && (
                 <div>
                     <Link to="/dorm-pictures" style={{textDecoration: 'none'}}>
                         <button>Videos</button>
                     </Link>
 
                     <button onClick={handleShowModelList}>View 3D Model</button>
-                    {showModelList && modelData[selectedDorm] && (
-                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '10px' }}>
-                            {modelData[selectedDorm].map((model, index) => {
-                                console.log('Model name:', model.name);
-                                console.log('Model video URL:', model.videoUrl);
+                    
+                    {showModelList && modelData[selectedDorm] && modelData[selectedDorm][selectedRoomType] && (
+                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '10px' }}>
+                            {modelData[selectedDorm][selectedRoomType].map((model, index) => {
+                                console.log('Model name:', model.name);
+                                console.log('Model video URL:', model.videoUrl);
 
-                                return (
-                                    <button
-                                        key={index}
-                                        onClick={() => handleVideoClick(model.videoUrl)}
-                                        style={{
-                                            padding: '10px',
-                                            border: '1px solid #ccc',
-                                            borderRadius: '5px',
-                                            backgroundColor: '#f0f0f0',
-                                            cursor: 'pointer'
-                                        }}
-                                    >
-                                        {model.name}
-                                    </button>
-                                );
-                            })}
-                        </div>
+                                return (
+                                    <button
+                                        key={index}
+                                        onClick={() => handleVideoClick(model.videoUrl)}
+                                        style={{
+                                            padding: '10px',
+                                            border: '1px solid #ccc',
+                                            borderRadius: '5px',
+                                            backgroundColor: '#f0f0f0',
+                                            cursor: 'pointer'
+                                        }}
+                                    >
+                                        {model.name}
+                                    </button>
+                                );
+                            })}
+                        </div>
                     )}
+
                 </div>
             )}
             {selectedVideo && (
