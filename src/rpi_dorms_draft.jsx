@@ -101,7 +101,7 @@ function DormSelector(){
                 {name: 'E-Complex Single2', videoUrl: '/Finalized_Models/Ecomplex_Single2.mp4'}
             ],
             'Double': [
-                //{name: 'E-Complex_Double1', videoUrl: '/Finalized_Models/Ecomplex_Double.mp4'}
+                //{name: 'E-Complex_Double', videoUrl: '/Finalized_Models/Ecomplex_Double.mp4'}
             ]
         },
         'Blitman': {
@@ -118,7 +118,7 @@ function DormSelector(){
                 {name: 'Quad Double Macdonald', videoUrl: '/Finalized_Models/Quad_Double_Macdonald.mp4'}
             ],
             'Quadruple': [
-                //{name: 'E-Complex_Double1', videoUrl: '/Finalized_Models/Ecomplex_Double.mp4'}
+                //{name: 'Quad_Quad', videoUrl: '/Finalized_Models/Quad_Quad.mp4'}
             ]
         },
         'Colvin and Albright (RAHP A)': {
@@ -133,12 +133,12 @@ function DormSelector(){
         },
         'City Station': {
             'Apartment': [
-                //{name: 'Blitman Apt1', videoUrl: '/Finalized_Models/Blitman.mp4'}
+                //{name: 'City Station Aptartment', videoUrl: '/Finalized_Models/City_Station.mp4'}
             ]
         },
         'Polytechnic': {
             'Apartment': [
-                //{name: 'Blitman Apt1', videoUrl: '/Finalized_Models/Blitman.mp4'}
+                //{name: 'Polytechnic', videoUrl: '/Finalized_Models/Polytechnic.mp4'}
             ]
         },
         'Bryckwyck Apartments': {
@@ -146,12 +146,12 @@ function DormSelector(){
                 {name: 'Bryckwyck Single Apt', videoUrl: '/Finalized_Models/Bryckwyck_Single.mp4'}
             ],
             'Double Apartment':[
-                //{name: 'Blitman Apt1', videoUrl: '/Finalized_Models/Blitman.mp4'}
+                //{name: 'Bryckwyck Double Apt', videoUrl: '/Finalized_Models/Brycwyck_Double.mp4'}
             ]
         },
         'Stacwyck Apartments': {
             'Apartment': [
-                //{name: 'Blitman Apt1', videoUrl: '/Finalized_Models/Blitman.mp4'}
+                //{name: 'Stacwyck Apartment', videoUrl: '/Finalized_Models/Stacwyck.mp4'}
             ]
         },
         
