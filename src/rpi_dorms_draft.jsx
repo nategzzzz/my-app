@@ -59,15 +59,15 @@ function DormSelector(){
     const modelData = {
         'Barton Hall': {
             'Triple': [
-                //{name: 'North Hall Single1', videoUrl: '/Finalized_Models/North_Hall_Single.mp4'}
+                //{name: 'Barton Hall Single', videoUrl: '/Finalized_Models/Barton_Hall.mp4'}
             ]
         },
         'Bray Hall': {
             'Single': [
-                //{name: 'North Hall Single1', videoUrl: '/Finalized_Models/North_Hall_Single.mp4'}
+                //{name: 'Bray Hall Single', videoUrl: '/Finalized_Models/Bray_Hall_Single.mp4'}
             ],
             'Double': [
-                //{name: 'North Hall Double', videoUrl: '/Finalized_Models/North_Hall_Double.mp4'}
+                //{name: 'Bray Hall Double', videoUrl: '/Finalized_Models/Bray_Hall_Double.mp4'}
             ]
         },
         'Sharp Hall': {
